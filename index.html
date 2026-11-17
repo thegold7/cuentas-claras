@@ -6,8 +6,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="Jk1VKWItUJEjfdYBER90zutln8jkhNRH7dIs8Q-D_FE">
-<title>Calculadora de Gratificación, CTS y Liquidación 2026 | Cuentas Claras Perú</title>
-<meta name="description" content="Calcula gratis tu gratificación de diciembre, CTS y liquidación en Perú. Explicado en palabras simples, con ejemplos. Sueldo mínimo S/ 1,230, actualizado noviembre 2026.">
+<title>Calculadora de Gratificación, CTS, Liquidación y Horas Extras 2026 | Cuentas Claras Perú</title>
+<meta name="description" content="Calcula gratis tu gratificación de diciembre, CTS, liquidación y horas extras en Perú. Explicado en palabras simples, con ejemplos. Sueldo mínimo S/ 1,230, actualizado noviembre 2026.">
 <link rel="canonical" href="https://thegold7.github.io/cuentas-claras/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_PE">
@@ -28,7 +28,7 @@
 <header class="hero">
   <div class="brand"><span class="dot" aria-hidden="true">S/</span>Cuentas Claras Perú</div>
   <h1>Calcula cuánto te toca, sin enredos</h1>
-  <p class="lead">Gratificación, CTS y liquidación en segundos. Cada calculadora te explica con palabras simples y un ejemplo cómo se llega al resultado. Gratis y sin registrarte.</p>
+  <p class="lead">Gratificación, CTS, liquidación y horas extras en segundos. Cada calculadora te explica con palabras simples y un ejemplo cómo se llega al resultado. Gratis y sin registrarte.</p>
   <span class="chip">Sueldo mínimo vigente: S/ 1,230 · Actualizado noviembre 2026</span>
   <span class="credit">Foto: Costa Verde, Lima · Unsplash</span>
 </header>
@@ -37,6 +37,7 @@
   <a href="#gratificacion" data-tab="gratificacion">Gratificación</a>
   <a href="#cts" data-tab="cts">CTS</a>
   <a href="#liquidacion" data-tab="liquidacion">Liquidación</a>
+  <a href="#horas-extras" data-tab="horas-extras">Horas extras</a>
 </nav>
 
 <!-- ================= GRATIFICACIÓN ================= -->
@@ -251,6 +252,63 @@
         <tr><td>CTS trunca (15 días de noviembre)</td><td>S/ 121.53</td></tr>
         <tr><td>Vacaciones truncas (8 meses y 15 días)</td><td>S/ 1,770.83</td></tr>
         <tr class="t"><td>Ana recibe (bruto)</td><td>S/ 3,709.03</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HORAS EXTRAS ================= -->
+<section class="panel" id="p-horas-extras" aria-labelledby="t-he">
+  <div class="grid">
+    <form class="card" id="f-he" novalidate>
+      <h2 id="t-he">Horas extras</h2>
+      <p class="sub">Cuánto te deben pagar por trabajar más allá de tu jornada.</p>
+      <div class="row2">
+        <div class="field">
+          <label for="h-sueldo">Sueldo mensual (S/)</label>
+          <input type="number" id="h-sueldo" min="0" step="0.01" value="1800" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="h-jornada">Horas de tu jornada diaria</label>
+          <input type="number" id="h-jornada" min="1" max="12" step="0.5" value="8" inputmode="decimal">
+          <span class="hint">Lo normal es 8 horas.</span>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="h-horas">Horas extras por día</label>
+          <input type="number" id="h-horas" min="0" step="0.5" value="3" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="h-dias">Días con horas extras en el mes</label>
+          <input type="number" id="h-dias" min="0" max="31" step="1" value="10" inputmode="numeric">
+        </div>
+      </div>
+      <label class="check" for="h-asig"><input type="checkbox" id="h-asig"><span>Recibo asignación familiar (S/ 123)<small>Se suma al sueldo para calcular el valor de tu hora.</small></span></label>
+    </form>
+    <div class="boleta" aria-live="polite" id="r-he"></div>
+  </div>
+  <div class="explain">
+    <div class="card">
+      <h3>¿Cómo se calcula?</h3>
+      <p>Primero se saca cuánto vale una hora de tu trabajo: tu sueldo entre 30 días, y eso entre las horas de tu jornada. Luego, cada día, las <strong>dos primeras horas extras</strong> se pagan con un 25% más, y <strong>desde la tercera</strong>, con un 35% más.</p>
+      <div class="formula">Valor hora = sueldo ÷ 30 ÷ horas de jornada<br>1.ª y 2.ª hora extra = valor hora × 1.25<br>Desde la 3.ª = valor hora × 1.35</div>
+      <ul class="ojo">
+        <li>Las horas extras son voluntarias: nadie te puede obligar a quedarte, salvo emergencias.</li>
+        <li>Se pagan aparte de tu sueldo. Si tu empresa y tú lo acuerdan, se pueden compensar con horas libres.</li>
+        <li>Sí tienen descuento de AFP u ONP.</li>
+        <li>Si las haces todos los meses, también suben tu gratificación y tu CTS.</li>
+        <li>Trabajar en feriado o en tu día de descanso, sin otro día libre a cambio, se paga con 100% adicional.</li>
+      </ul>
+    </div>
+    <div class="example">
+      <span class="tag">Ejemplo</span>
+      <p><strong>Pedro</strong> gana S/ 1,800 con jornada de 8 horas. En el mes se quedó 3 horas extra durante 10 días.</p>
+      <table>
+        <tr><td>Valor hora: 1,800 ÷ 30 ÷ 8</td><td>S/ 7.50</td></tr>
+        <tr><td>2 horas × 7.50 × 1.25 (por día)</td><td>S/ 18.75</td></tr>
+        <tr><td>1 hora × 7.50 × 1.35 (por día)</td><td>S/ 10.13</td></tr>
+        <tr class="t"><td>Por 10 días, Pedro recibe</td><td>S/ 288.75</td></tr>
       </table>
     </div>
   </div>

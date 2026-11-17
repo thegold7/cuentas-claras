@@ -163,6 +163,26 @@
     boleta(el, {label:'Tu liquidación sería', total:sum, when:'Tu empresa debe pagarla dentro de las 48 horas después del ' + fechaTxt(ces) + '.', lines, notes});
   }
 
+
+  /* ---------- Horas extras ---------- */
+  function calcHE(){
+    const rem = num('h-sueldo') + ($('h-asig').checked ? ASIG : 0);
+    const jor = num('h-jornada') || 8;
+    const h = num('h-horas'), dias = Math.min(31, Math.floor(num('h-dias')));
+    const vh = rem / 30 / jor;
+    const h25 = Math.min(2, h), h35 = Math.max(0, h - 2);
+    const p25 = h25 * vh * 1.25 * dias, p35 = h35 * vh * 1.35 * dias;
+    const lines = [['Valor de tu hora', vh, money(rem) + ' ÷ 30 ÷ ' + jor + ' horas']];
+    lines.push(['Horas al 25%', p25, (h25 * dias) + ' horas (' + h25 + ' por día × ' + dias + ' días)']);
+    if (h35 > 0) lines.push(['Horas al 35%', p35, (h35 * dias) + ' horas (' + h35 + ' por día × ' + dias + ' días)']);
+    const el = $('r-he');
+    let html = '<div class="top"><div class="k">Te deben pagar este mes</div><div class="total">' + money(p25 + p35) + '</div><div class="when">Además de tu sueldo. Monto bruto: se descuenta AFP u ONP.</div></div><ul class="lines">';
+    lines.forEach((l, i) => { html += '<li><span>' + l[0] + '<span class="d">' + l[2] + '</span></span><span class="v">' + money(l[1]) + '</span></li>'; });
+    html += '<li class="sum"><span>Total horas extras</span><span class="v">' + money(p25 + p35) + '</span></li></ul>';
+    if (jor > 8) html += '<div class="notice">La jornada máxima legal es de 8 horas diarias o 48 semanales. Si tu jornada es mayor, revisa tu contrato.</div>';
+    el.innerHTML = html;
+  }
+
   // Mantener la gratificación de CTS/liquidación igual al sueldo mientras el usuario no la toque
   [['c-sueldo','c-grati'],['l-sueldo','l-grati']].forEach(([s,g]) => {
     let touched = false;
@@ -173,10 +193,12 @@
   $('f-grati').addEventListener('input', calcGrati);
   $('f-cts').addEventListener('input', calcCTS);
   $('f-liq').addEventListener('input', calcLiq);
+  $('f-he').addEventListener('input', calcHE);
+  $('f-he').addEventListener('submit', e => e.preventDefault());
   ['f-grati','f-cts','f-liq'].forEach(id => $(id).addEventListener('submit', e => e.preventDefault()));
 
   // Pestañas por hash
-  const tabs = ['gratificacion','cts','liquidacion'];
+  const tabs = ['gratificacion','cts','liquidacion','horas-extras'];
   function show(){
     const h = location.hash.slice(1);
     const t = tabs.includes(h) ? h : 'gratificacion';
@@ -187,5 +209,5 @@
     });
   }
   window.addEventListener('hashchange', show);
-  show(); calcGrati(); calcCTS(); calcLiq();
+  show(); calcGrati(); calcCTS(); calcLiq(); calcHE();
 })();
