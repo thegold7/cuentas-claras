@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuentas Claras Perú</title>
+<meta name="description" content="Calcula gratis tu gratificación, CTS y liquidación en Perú. Explicado en palabras simples, con ejemplos. Valores actualizados a noviembre 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="brand"><span class="dot" aria-hidden="true">S/</span>Cuentas Claras Perú</div>
+  <h1>Calcula cuánto te toca, sin enredos</h1>
+  <p class="lead">Gratificación, CTS y liquidación en segundos. Cada calculadora te explica con palabras simples y un ejemplo cómo se llega al resultado. Gratis y sin registrarte.</p>
+  <span class="chip">Sueldo mínimo vigente: S/ 1,230 · Actualizado noviembre 2026</span>
+  <span class="credit">Foto: Costa Verde, Lima · Unsplash</span>
+</header>
+
+<nav class="tabs" aria-label="Calculadoras">
+  <a href="#gratificacion" data-tab="gratificacion">Gratificación</a>
+  <a href="#cts" data-tab="cts">CTS</a>
+  <a href="#liquidacion" data-tab="liquidacion">Liquidación</a>
+</nav>
+
+<!-- ================= GRATIFICACIÓN ================= -->
+<section class="panel" id="p-gratificacion" aria-labelledby="t-grati">
+  <div class="grid">
+    <form class="card" id="f-grati" novalidate>
+      <h2 id="t-grati">Gratificación</h2>
+      <p class="sub">El pago extra de julio (Fiestas Patrias) y diciembre (Navidad).</p>
+      <div class="field">
+        <label for="g-periodo">¿Qué gratificación quieres calcular?</label>
+        <select id="g-periodo">
+          <option value="dic">Diciembre (meses de julio a diciembre)</option>
+          <option value="jul">Julio (meses de enero a junio)</option>
+        </select>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="g-sueldo">Sueldo mensual (S/)</label>
+          <input type="number" id="g-sueldo" min="0" step="0.01" value="2500" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="g-meses">Meses completos</label>
+          <select id="g-meses">
+            <option>6</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option><option>0</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="g-extras">Promedio de horas extras o comisiones (S/)</label>
+        <input type="number" id="g-extras" min="0" step="0.01" value="0" inputmode="decimal">
+        <span class="hint">Solo si las recibes de forma regular. Si no, déjalo en 0.</span>
+      </div>
+      <label class="check" for="g-asig"><input type="checkbox" id="g-asig"><span>Recibo asignación familiar (S/ 123)<small>Si tienes hijos menores de 18 años, o hasta 24 si estudian.</small></span></label>
+      <div class="row2">
+        <div class="field">
+          <label for="g-salud">Seguro de salud</label>
+          <select id="g-salud"><option value="essalud">EsSalud</option><option value="eps">EPS</option></select>
+        </div>
+        <div class="field">
+          <label for="g-reg">Tipo de empresa</label>
+          <select id="g-reg"><option value="general">Régimen general</option><option value="pequena">Pequeña empresa</option><option value="micro">Microempresa</option></select>
+        </div>
+      </div>
+    </form>
+    <div class="boleta" aria-live="polite" id="r-grati"></div>
+  </div>
+  <div class="explain">
+    <div class="card">
+      <h3>¿Cómo se calcula?</h3>
+      <p>Si trabajaste los 6 meses completos del semestre, te toca un sueldo entero. Si trabajaste menos, te toca una parte: un sexto de tu sueldo por cada mes completo.</p>
+      <div class="formula">Gratificación = sueldo ÷ 6 × meses completos</div>
+      <p>Encima de eso recibes un bono del 9%. Es el dinero que tu empresa pagaría a EsSalud y que, por ley, se te entrega a ti. Si tienes EPS, el bono es de 6.75%.</p>
+      <ul class="ojo">
+        <li>Solo cuentan los meses completos. Si entraste el 10 de agosto, agosto no cuenta.</li>
+        <li>A la gratificación no le descuentan AFP ni ONP.</li>
+        <li>Te la deben pagar hasta el 15 de julio y hasta el 15 de diciembre.</li>
+        <li>En una pequeña empresa recibes la mitad. En una microempresa no corresponde.</li>
+      </ul>
+    </div>
+    <div class="example">
+      <span class="tag">Ejemplo</span>
+      <p><strong>Rosa</strong> gana S/ 2,000 y entró a trabajar el 1 de marzo. Para la gratificación de julio cuentan los meses de enero a junio, así que trabajó 4 meses completos (marzo a junio).</p>
+      <table>
+        <tr><td>2,000 ÷ 6 × 4 meses</td><td>S/ 1,333.33</td></tr>
+        <tr><td>Bono 9%</td><td>S/ 120.00</td></tr>
+        <tr class="t"><td>Rosa recibe</td><td>S/ 1,453.33</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTS ================= -->
+<section class="panel" id="p-cts" aria-labelledby="t-cts">
+  <div class="grid">
+    <form class="card" id="f-cts" novalidate>
+      <h2 id="t-cts">CTS</h2>
+      <p class="sub">El ahorro que tu empresa deposita en tu cuenta CTS en mayo y noviembre.</p>
+      <div class="field">
+        <label for="c-periodo">¿Qué depósito quieres calcular?</label>
+        <select id="c-periodo">
+          <option value="nov">Noviembre (meses de mayo a octubre)</option>
+          <option value="may">Mayo (meses de noviembre a abril)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="c-sueldo">Sueldo mensual (S/)</label>
+        <input type="number" id="c-sueldo" min="0" step="0.01" value="2500" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="c-grati">Última gratificación que recibiste (S/)</label>
+        <input type="number" id="c-grati" min="0" step="0.01" value="2500" inputmode="decimal">
+        <span class="hint">Sin el bono del 9%. Para el depósito de noviembre es la de julio; para el de mayo, la de diciembre.</span>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="c-meses">Meses trabajados</label>
+          <select id="c-meses"><option>6</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option><option>0</option></select>
+        </div>
+        <div class="field">
+          <label for="c-dias">Días sueltos extra</label>
+          <input type="number" id="c-dias" min="0" max="29" step="1" value="0" inputmode="numeric">
+        </div>
+      </div>
+      <div class="field">
+        <label for="c-extras">Promedio de horas extras o comisiones (S/)</label>
+        <input type="number" id="c-extras" min="0" step="0.01" value="0" inputmode="decimal">
+      </div>
+      <label class="check" for="c-asig"><input type="checkbox" id="c-asig"><span>Recibo asignación familiar (S/ 123)<small>Si tienes hijos menores de 18 años, o hasta 24 si estudian.</small></span></label>
+      <div class="field">
+        <label for="c-reg">Tipo de empresa</label>
+        <select id="c-reg"><option value="general">Régimen general</option><option value="pequena">Pequeña empresa</option><option value="micro">Microempresa</option></select>
+      </div>
+    </form>
+    <div class="boleta" aria-live="polite" id="r-cts"></div>
+  </div>
+  <div class="explain">
+    <div class="card">
+      <h3>¿Cómo se calcula?</h3>
+      <p>La CTS es un respaldo por si te quedas sin trabajo. Por cada semestre completo te toca más o menos medio sueldo. A tu sueldo se le suma un sexto de tu última gratificación, porque la ley la considera parte de lo que ganas.</p>
+      <div class="formula">Base = sueldo + (última gratificación ÷ 6)<br>CTS = base ÷ 12 × meses + base ÷ 360 × días</div>
+      <ul class="ojo">
+        <li>Los depósitos vencen el 15 de mayo y el 15 de noviembre.</li>
+        <li>A la CTS no le descuentan AFP, ONP ni impuesto a la renta.</li>
+        <li>Necesitas al menos un mes trabajado para que te corresponda.</li>
+        <li>En una pequeña empresa recibes la mitad. En una microempresa no corresponde.</li>
+      </ul>
+    </div>
+    <div class="example">
+      <span class="tag">Ejemplo</span>
+      <p><strong>Luis</strong> gana S/ 2,500, cobró S/ 2,500 de gratificación en julio y trabajó todo el periodo de mayo a octubre.</p>
+      <table>
+        <tr><td>Base: 2,500 + (2,500 ÷ 6)</td><td>S/ 2,916.67</td></tr>
+        <tr><td>2,916.67 ÷ 12 × 6 meses</td><td>S/ 1,458.33</td></tr>
+        <tr class="t"><td>Depósito de noviembre</td><td>S/ 1,458.33</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LIQUIDACIÓN ================= -->
+<section class="panel" id="p-liquidacion" aria-labelledby="t-liq">
+  <div class="grid">
+    <form class="card" id="f-liq" novalidate>
+      <h2 id="t-liq">Liquidación</h2>
+      <p class="sub">Lo que te deben pagar cuando dejas un trabajo, por renuncia o despido.</p>
+      <div class="row2">
+        <div class="field">
+          <label for="l-ingreso">Fecha de ingreso</label>
+          <input type="date" id="l-ingreso" value="2024-03-01">
+        </div>
+        <div class="field">
+          <label for="l-cese">Último día de trabajo</label>
+          <input type="date" id="l-cese" value="2026-11-15">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="l-sueldo">Sueldo mensual (S/)</label>
+          <input type="number" id="l-sueldo" min="0" step="0.01" value="2500" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="l-grati">Última gratificación (S/)</label>
+          <input type="number" id="l-grati" min="0" step="0.01" value="2500" inputmode="decimal">
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="l-vacpend">Días de vacaciones pendientes</label>
+          <input type="number" id="l-vacpend" min="0" step="1" value="0" inputmode="numeric">
+          <span class="hint">De años anteriores, que nunca tomaste.</span>
+        </div>
+        <div class="field">
+          <label for="l-extras">Horas extras o comisiones regulares (S/)</label>
+          <input type="number" id="l-extras" min="0" step="0.01" value="0" inputmode="decimal">
+        </div>
+      </div>
+      <label class="check" for="l-asig"><input type="checkbox" id="l-asig"><span>Recibo asignación familiar (S/ 123)</span></label>
+      <label class="check" for="l-despido"><input type="checkbox" id="l-despido"><span>Me despidieron sin causa justa<small>Solo si tenías contrato indefinido. Suma la indemnización por despido arbitrario.</small></span></label>
+      <div class="row2">
+        <div class="field">
+          <label for="l-salud">Seguro de salud</label>
+          <select id="l-salud"><option value="essalud">EsSalud</option><option value="eps">EPS</option></select>
+        </div>
+        <div class="field">
+          <label for="l-reg">Tipo de empresa</label>
+          <select id="l-reg"><option value="general">Régimen general</option><option value="pequena">Pequeña empresa</option><option value="micro">Microempresa</option></select>
+        </div>
+      </div>
+    </form>
+    <div class="boleta" aria-live="polite" id="r-liq"></div>
+  </div>
+  <div class="explain">
+    <div class="card">
+      <h3>¿Cómo se calcula?</h3>
+      <p>Cuando dejas un trabajo, la empresa te paga todo lo que acumulaste y todavía no cobraste. Son tres partes:</p>
+      <p><strong>Gratificación trunca:</strong> la parte de la gratificación por los meses completos del semestre en curso, con su bono de 9%.<br>
+      <strong>CTS trunca:</strong> la CTS de los meses y días desde tu último depósito.<br>
+      <strong>Vacaciones truncas:</strong> un doceavo de tu sueldo por cada mes trabajado desde tu último aniversario en la empresa.</p>
+      <ul class="ojo">
+        <li>Te deben pagar dentro de las 48 horas después de tu último día.</li>
+        <li>A las vacaciones truncas sí les descuentan AFP u ONP. Lo demás llega completo.</li>
+        <li>Si te despiden sin causa con contrato indefinido, te deben 1.5 sueldos por año trabajado, hasta un máximo de 12 sueldos.</li>
+        <li>Este cálculo asume que tu último depósito de CTS ya se hizo.</li>
+      </ul>
+    </div>
+    <div class="example">
+      <span class="tag">Ejemplo</span>
+      <p><strong>Ana</strong> ganaba S/ 2,500, entró el 1 de marzo de 2024 y renunció el 15 de noviembre de 2026. Su última gratificación fue de S/ 2,500.</p>
+      <table>
+        <tr><td>Gratificación trunca (jul–oct, 4 meses)</td><td>S/ 1,666.67</td></tr>
+        <tr><td>Bono 9%</td><td>S/ 150.00</td></tr>
+        <tr><td>CTS trunca (15 días de noviembre)</td><td>S/ 121.53</td></tr>
+        <tr><td>Vacaciones truncas (8 meses y 15 días)</td><td>S/ 1,770.83</td></tr>
+        <tr class="t"><td>Ana recibe (bruto)</td><td>S/ 3,709.03</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Importante:</strong> estos cálculos son referenciales y usan las reglas del régimen laboral privado. No reemplazan la boleta de tu empresa ni una asesoría legal. Si algo no cuadra, puedes consultar gratis al Ministerio de Trabajo o a SUNAFIL.</p>
+  <p>Valores usados: sueldo mínimo S/ 1,230 desde el 1 de octubre de 2026 (D.S. 015-2026-TR); asignación familiar S/ 123 (10% del sueldo mínimo). Pequeña empresa y microempresa: según su inscripción en el REMYPE. Última revisión: noviembre de 2026.</p>
+</footer>
+</div>
+
+<script src="js/calculadoras.js"></script>
+</body>
+</html>
