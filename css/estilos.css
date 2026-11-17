@@ -99,3 +99,48 @@ input:hover,select:hover{border-color:var(--muted)}
 footer{margin:40px 0 30px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
 footer p{max-width:80ch;margin:0 0 8px}
 @media (prefers-reduced-motion:no-preference){.panel.active{animation:fade .25s ease}@keyframes fade{from{opacity:.4}to{opacity:1}}}
+
+/* ---------- Guías (portada) ---------- */
+.guias{margin-top:34px}
+.guias h2,.apoyo h2{font-family:var(--font-display);font-size:24px;letter-spacing:-.01em;margin:0 0 14px}
+.guias-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.guias-grid{grid-template-columns:1fr}}
+.guia{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;color:var(--ink);text-decoration:none}
+.guia:hover{border-color:var(--accent)}
+.guia strong{font-family:var(--font-display);font-size:17px;line-height:1.25}
+.guia span:last-child{color:var(--muted);font-size:14px}
+.g-tag{align-self:flex-start;font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:6px}
+
+/* ---------- Apoyo con Yape ---------- */
+.apoyo{margin-top:28px;display:flex;gap:24px;align-items:center;justify-content:space-between;background:var(--card);border:1.5px solid var(--accent);border-radius:16px;padding:22px}
+.apoyo[hidden]{display:none}
+.apoyo p{margin:0;max-width:60ch;color:var(--muted)}
+.apoyo img{width:180px;height:180px;border-radius:12px;background:#fff;padding:6px;flex-shrink:0}
+@media (max-width:600px){.apoyo{flex-direction:column;align-items:flex-start}}
+
+/* ---------- Páginas de guía ---------- */
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.topbar a.brand{color:var(--ink);text-decoration:none;margin:0}
+.topbar a.brand .dot{background:var(--accent)}
+.topbar .btn{font-size:14px}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:10px}
+.btn:hover{filter:brightness(1.08)}
+article.guia-art{max-width:720px;margin:0 auto;padding:30px 0 10px}
+article.guia-art h1{max-width:none;margin:8px 0 12px;text-shadow:none}
+article.guia-art .meta{color:var(--muted);font-size:14px;margin-bottom:22px}
+article.guia-art h2{font-family:var(--font-display);font-size:24px;letter-spacing:-.01em;margin:34px 0 10px;text-wrap:balance}
+article.guia-art h3{font-family:var(--font-display);font-size:19px;margin:24px 0 8px}
+article.guia-art p,article.guia-art li{max-width:65ch}
+article.guia-art ul,article.guia-art ol{padding-left:22px}
+article.guia-art li{margin-bottom:6px}
+.cta{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--accent-soft);border-radius:14px;padding:16px 18px;margin:22px 0}
+.cta p{margin:0;font-weight:600}
+.tabla{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums;margin:12px 0}
+.tabla-wrap{overflow-x:auto}
+.tabla th,.tabla td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+.tabla th{font-size:13.5px;color:var(--muted);font-weight:600}
+.tabla td.n{text-align:right;white-space:nowrap;font-weight:600}
+.tabla tr.t td{font-weight:700;color:var(--accent);border-bottom:0}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{margin:10px 0 2px}
