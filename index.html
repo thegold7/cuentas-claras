@@ -6,8 +6,8 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="Jk1VKWItUJEjfdYBER90zutln8jkhNRH7dIs8Q-D_FE">
-<title>Calculadora de Gratificación, CTS, Liquidación y Horas Extras 2026 | Cuentas Claras Perú</title>
-<meta name="description" content="Calcula gratis tu gratificación de diciembre, CTS, liquidación y horas extras en Perú. Explicado en palabras simples, con ejemplos. Sueldo mínimo S/ 1,230, actualizado noviembre 2026.">
+<title>Calculadora de Gratificación, CTS, Liquidación, Horas Extras y Renta de 5ta 2026 | Cuentas Claras Perú</title>
+<meta name="description" content="Calcula gratis tu gratificación de diciembre, CTS, liquidación, horas extras y renta de quinta categoría en Perú. Explicado en palabras simples, con ejemplos. Sueldo mínimo S/ 1,230, actualizado noviembre 2026.">
 <link rel="canonical" href="https://thegold7.github.io/cuentas-claras/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_PE">
@@ -28,7 +28,7 @@
 <header class="hero">
   <div class="brand"><span class="dot" aria-hidden="true">S/</span>Cuentas Claras Perú</div>
   <h1>Calcula cuánto te toca, sin enredos</h1>
-  <p class="lead">Gratificación, CTS, liquidación y horas extras en segundos. Cada calculadora te explica con palabras simples y un ejemplo cómo se llega al resultado. Gratis y sin registrarte.</p>
+  <p class="lead">Gratificación, CTS, liquidación, horas extras y renta de quinta en segundos. Cada calculadora te explica con palabras simples y un ejemplo cómo se llega al resultado. Gratis y sin registrarte.</p>
   <span class="chip">Sueldo mínimo vigente: S/ 1,230 · Actualizado noviembre 2026</span>
   <span class="credit">Foto: Costa Verde, Lima · Unsplash</span>
 </header>
@@ -38,6 +38,7 @@
   <a href="#cts" data-tab="cts">CTS</a>
   <a href="#liquidacion" data-tab="liquidacion">Liquidación</a>
   <a href="#horas-extras" data-tab="horas-extras">Horas extras</a>
+  <a href="#renta-quinta" data-tab="renta-quinta">Renta de 5ta</a>
 </nav>
 
 <!-- ================= GRATIFICACIÓN ================= -->
@@ -309,6 +310,56 @@
         <tr><td>2 horas × 7.50 × 1.25 (por día)</td><td>S/ 18.75</td></tr>
         <tr><td>1 hora × 7.50 × 1.35 (por día)</td><td>S/ 10.13</td></tr>
         <tr class="t"><td>Por 10 días, Pedro recibe</td><td>S/ 288.75</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RENTA DE QUINTA ================= -->
+<section class="panel" id="p-renta-quinta" aria-labelledby="t-rq">
+  <div class="grid">
+    <form class="card" id="f-rq" novalidate>
+      <h2 id="t-rq">Renta de quinta categoría</h2>
+      <p class="sub">El impuesto que te descuentan de tu sueldo si ganas más de S/ 38,500 al año.</p>
+      <div class="field">
+        <label for="q-sueldo">Sueldo mensual bruto (S/)</label>
+        <input type="number" id="q-sueldo" min="0" step="0.01" value="4500" inputmode="decimal">
+        <span class="hint">Antes de descuentos de AFP u ONP.</span>
+      </div>
+      <div class="field">
+        <label for="q-extras">Otros ingresos del año (S/)</label>
+        <input type="number" id="q-extras" min="0" step="0.01" value="0" inputmode="decimal">
+        <span class="hint">Bonos, utilidades u horas extras que esperas recibir en todo el año.</span>
+      </div>
+      <label class="check" for="q-asig"><input type="checkbox" id="q-asig"><span>Recibo asignación familiar (S/ 123)</span></label>
+      <div class="field">
+        <label for="q-salud">Seguro de salud</label>
+        <select id="q-salud"><option value="essalud">EsSalud (bono de 9% en gratificaciones)</option><option value="eps">EPS (bono de 6.75%)</option></select>
+      </div>
+    </form>
+    <div class="boleta" aria-live="polite" id="r-rq"></div>
+  </div>
+  <div class="explain">
+    <div class="card">
+      <h3>¿Cómo se calcula?</h3>
+      <p>Se suma todo lo que ganarás en el año: 12 sueldos, las 2 gratificaciones con su bono y otros ingresos. A eso se le restan 7 UIT (S/ 38,500 en 2026), que no pagan impuesto. Sobre lo que sobra se cobra por tramos: cada parte paga su propia tasa, no todo paga la más alta.</p>
+      <div class="formula">Renta neta = ingreso anual − S/ 38,500<br>Hasta S/ 27,500: 8% · hasta S/ 110,000: 14% · hasta S/ 192,500: 17% · hasta S/ 247,500: 20% · más: 30%</div>
+      <ul class="ojo">
+        <li>Si en el año ganas S/ 38,500 o menos, no pagas este impuesto.</li>
+        <li>Tu empresa calcula el impuesto del año y lo descuenta mes a mes. El monto puede variar un poco entre meses.</li>
+        <li>La CTS no paga este impuesto.</li>
+        <li>Puedes deducir hasta 3 UIT más (S/ 16,500) por gastos como alquiler, restaurantes o médicos, pidiendo comprobante electrónico. SUNAT te devuelve lo pagado de más en tu declaración anual.</li>
+      </ul>
+    </div>
+    <div class="example">
+      <span class="tag">Ejemplo</span>
+      <p><strong>Carlos</strong> gana S/ 4,500 al mes, tiene EsSalud y no recibe otros ingresos.</p>
+      <table>
+        <tr><td>12 sueldos + 2 gratificaciones + bono 9%</td><td>S/ 63,810.00</td></tr>
+        <tr><td>Menos 7 UIT</td><td>− S/ 38,500.00</td></tr>
+        <tr><td>Renta neta (todo en el tramo de 8%)</td><td>S/ 25,310.00</td></tr>
+        <tr><td>Impuesto del año: 25,310 × 8%</td><td>S/ 2,024.80</td></tr>
+        <tr class="t"><td>Descuento promedio al mes</td><td>S/ 168.73</td></tr>
       </table>
     </div>
   </div>

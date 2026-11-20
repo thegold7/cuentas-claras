@@ -183,6 +183,39 @@
     el.innerHTML = html;
   }
 
+
+  /* ---------- Renta de quinta ---------- */
+  function calcRQ(){
+    const UIT = 5500;
+    const rem = num('q-sueldo') + ($('q-asig').checked ? ASIG : 0);
+    const tasaBono = $('q-salud').value === 'eps' ? 0.0675 : 0.09;
+    const sueldos = rem * 12, gratis = rem * 2, bono = gratis * tasaBono, extras = num('q-extras');
+    const anual = sueldos + gratis + bono + extras;
+    const neta = Math.max(0, anual - 7 * UIT);
+    const tramos = [[5,0.08],[20,0.14],[35,0.17],[45,0.20],[Infinity,0.30]];
+    let resto = neta, prev = 0, imp = 0; const det = [];
+    for (const [hasta, tasa] of tramos){
+      const tope = hasta === Infinity ? Infinity : hasta * UIT;
+      const base = Math.max(0, Math.min(resto, tope - prev));
+      if (base > 0){ det.push([tasa, base]); imp += base * tasa; }
+      resto -= base; prev = tope; if (resto <= 0) break;
+    }
+    const lines = [
+      ['Ingreso del año', anual, '12 sueldos ' + money(sueldos) + ' + 2 gratificaciones ' + money(gratis) + ' + bono ' + money(bono) + (extras ? ' + otros ' + money(extras) : '')],
+      ['Menos 7 UIT', -7 * UIT, 'Monto que no paga impuesto en 2026'],
+      ['Renta neta', neta, neta > 0 ? 'Lo que paga impuesto' : 'No llegas al mínimo: no pagas']
+    ];
+    det.forEach(([tasa, base]) => lines.push(['Tramo de ' + Math.round(tasa * 100) + '%', base * tasa, money(base) + ' × ' + Math.round(tasa * 100) + '%']));
+    const notes = [];
+    notes.push({t:'Impuesto del año: ' + money(imp) + (anual > 0 ? ' (' + (imp / anual * 100).toFixed(1) + '% de lo que ganas)' : '') + '.'});
+    const el = $('r-rq');
+    let html = '<div class="top"><div class="k">Te descontarían al mes (promedio)</div><div class="total">' + money(imp / 12) + '</div><div class="when">Estimado. Tu empresa lo reparte entre los 12 meses del año.</div></div><ul class="lines">';
+    lines.forEach(l => { html += '<li><span>' + l[0] + '<span class="d">' + l[2] + '</span></span><span class="v">' + money(l[1]) + '</span></li>'; });
+    html += '<li class="sum"><span>Impuesto del año</span><span class="v">' + money(imp) + '</span></li></ul>';
+    notes.forEach(n => { html += '<div class="notice">' + n.t + '</div>'; });
+    el.innerHTML = html;
+  }
+
   // Mantener la gratificación de CTS/liquidación igual al sueldo mientras el usuario no la toque
   [['c-sueldo','c-grati'],['l-sueldo','l-grati']].forEach(([s,g]) => {
     let touched = false;
@@ -194,11 +227,13 @@
   $('f-cts').addEventListener('input', calcCTS);
   $('f-liq').addEventListener('input', calcLiq);
   $('f-he').addEventListener('input', calcHE);
+  $('f-rq').addEventListener('input', calcRQ);
+  $('f-rq').addEventListener('submit', e => e.preventDefault());
   $('f-he').addEventListener('submit', e => e.preventDefault());
   ['f-grati','f-cts','f-liq'].forEach(id => $(id).addEventListener('submit', e => e.preventDefault()));
 
   // Pestañas por hash
-  const tabs = ['gratificacion','cts','liquidacion','horas-extras'];
+  const tabs = ['gratificacion','cts','liquidacion','horas-extras','renta-quinta'];
   function show(){
     const h = location.hash.slice(1);
     const t = tabs.includes(h) ? h : 'gratificacion';
@@ -209,5 +244,5 @@
     });
   }
   window.addEventListener('hashchange', show);
-  show(); calcGrati(); calcCTS(); calcLiq(); calcHE();
+  show(); calcGrati(); calcCTS(); calcLiq(); calcHE(); calcRQ();
 })();
